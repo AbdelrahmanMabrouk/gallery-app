@@ -7,7 +7,7 @@ import { MoonLoader } from "react-spinners";
 export default function Product() {
   const [allProducts, setAllProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,7 +18,7 @@ export default function Product() {
       } catch (error) {
         console.error("Failed to fetch products:", error);
       } finally {
-        setLoading(false); // Set loading to false after fetching data
+        setLoading(false); 
       }
     };
 
@@ -43,7 +43,6 @@ export default function Product() {
         />
       </div>
 
-      {/* Show products or loading indicator */}
       {loading ? (
         <div className="flex justify-center items-center h-60">
         <MoonLoader color="#374151" />
