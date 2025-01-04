@@ -29,7 +29,7 @@ export default async function ProductPage({ params }: { params: PageParams }) {
   const productData = await getProductById(params.id);
 
   if (!productData) {
-    notFound(); // This will trigger a 404 page in Next.js
+    notFound(); 
   }
 
   return (
