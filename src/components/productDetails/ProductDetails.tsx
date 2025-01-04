@@ -1,19 +1,25 @@
 import Image from "next/image";
 import React from "react";
+
 interface Product {
   id: number;
   title: string;
   price: number;
   description: string;
   image: string;
-  category:string;
+  category: string;
 }
 
 interface Iprop {
   productData: Product;
 }
+
 export default function ProductDetails({ productData }: Iprop) {
   console.log(productData);
+
+  const fallbackImage = "/path/to/fallback-image.jpg"; 
+  
+  const imageSrc = productData.image && productData.image.startsWith("http") ? productData.image : fallbackImage;
 
   return (
     <>
@@ -29,19 +35,18 @@ export default function ProductDetails({ productData }: Iprop) {
 
                 <p className="mt-4 text-gray-700">{productData.description}</p>
                 <div className="flex justify-end">
-                <p className="text-gray-700 text-lg font-semibold">${productData.price}</p>
+                  <p className="text-gray-700 text-lg font-semibold">${productData.price}</p>
                 </div>
               </div>
             </div>
 
             <div className="flex justify-center">
-            <Image
-           
-            src={productData.image}
-            alt={productData.title}
-            width={300}
-            height={300}
-            />
+              <Image
+                src={imageSrc}
+                alt={productData.title}
+                width={300}
+                height={300}
+              />
             </div>
           </div>
         </div>
