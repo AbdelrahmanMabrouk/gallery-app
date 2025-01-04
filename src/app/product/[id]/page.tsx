@@ -1,28 +1,35 @@
 import ProductDetails from '@/components/productDetails/ProductDetails';
-import React from 'react'
+import React from 'react';
 
-
-const getProductById = async (id:string)=>{
-  try {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-    // console.log(response);
-    
-    const product = response.json()
-    return product
-  } catch (error) {
-    console.log(error);
-  }
-
+interface ProductData {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
 }
 
+const getProductById = async (id: string): Promise<ProductData | null> => {
+  try {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const product = await response.json();
+    return product;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+};
 
+export default async function Page({ params }: { params: { id: string } }) {
+  const productData = await getProductById(params.id);
 
-export default async function page({params}) {
+  if (!productData) {
+    return <div>Product not found</div>;
+  }
 
-  const productData = await getProductById(params.id)
-    await console.log(productData);
-    
   return (
-    <div><ProductDetails productData={productData}/></div>
-  )
+    <div>
+      <ProductDetails productData={productData} />
+    </div>
+  );
 }
