@@ -9,6 +9,10 @@ interface ProductData {
   image: string;
 }
 
+interface PageParams {
+  id: string;
+}
+
 const getProductById = async (id: string): Promise<ProductData | null> => {
   try {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
@@ -20,7 +24,7 @@ const getProductById = async (id: string): Promise<ProductData | null> => {
   }
 };
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: PageParams }) {
   const productData = await getProductById(params.id);
 
   if (!productData) {
