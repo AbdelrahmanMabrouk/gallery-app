@@ -2,7 +2,7 @@ import ProductDetails from '@/components/productDetails/ProductDetails';
 import React from 'react'
 
 
-const getProductById = async (id)=>{
+const getProductById = async (id:string)=>{
   try {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`)
     // console.log(response);

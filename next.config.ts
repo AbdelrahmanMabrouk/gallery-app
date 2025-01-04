@@ -1,9 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  images:{
-    domains:["fakestoreapi.com"]
-  }
+module.exports = {
+  experimental: {
+    outputFileTracing: true,
+  },
 };
-
-export default nextConfig;

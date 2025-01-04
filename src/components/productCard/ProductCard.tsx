@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -34,7 +35,9 @@ export default function ProductCard({ product }: Iprop) {
         </svg>
       </button>
 
-      <img
+      <Image
+        width={200}
+        height={200}
         src={product.image}
         alt={product.title}
         className="h-64 w-full object-cover rounded-t-lg transition duration-500 group-hover:scale-105"
