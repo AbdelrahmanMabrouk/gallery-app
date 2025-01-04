@@ -24,6 +24,7 @@ const getProductById = async (id: string): Promise<ProductData | null> => {
   }
 };
 
+// Define the page component with typed props
 export default async function Page({ params }: { params: PageParams }) {
   const productData = await getProductById(params.id);
 
